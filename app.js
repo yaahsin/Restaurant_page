@@ -70,8 +70,9 @@ app.get("/restaurants/:restaurantId", (req, res) => {
 // })
 
 // route setting 新增餐廳頁面
-// 無法使用兩層目錄 /restaurants/new
-app.get("/restaurantsNew", (req, res) => {
+// 無法使用restaurants + new /restaurants/new
+// restaurant需改成其他字詞才可以
+app.get("/yahsin/New", (req, res) => {
   res.render("new")
 })
 
@@ -99,6 +100,15 @@ app.post('/restaurants/:restaurantId/edit', (req, res) => {
     .catch(err => console.log(err))
 })
 
+// route setting 刪除功能
+app.post('/restaurants/:restaurantId/delete', (req, res) => {
+  const { restaurantId } = req.params
+
+  Restaurant.findById(restaurantId)
+    .then(restaurantData => restaurantData.remove())
+    .then((restaurantData) => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 
 // start and listen on the Express server
 app.listen(port, () => {
