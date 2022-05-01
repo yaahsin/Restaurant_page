@@ -39,7 +39,7 @@ const Restaurant = require('./models/Restaurant')
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // routes setting
-// past the movie data into 'index' partial template
+// past the data into 'index' partial template
 app.get('/', (req, res) => {
   restaurantList.find()
     .lean()
@@ -61,13 +61,22 @@ app.get("/restaurants/:restaurantId", (req, res) => {
 })
 
 // routes setting 搜尋頁面
-// app.get('/search', (req, res) => {
-//   const keyword = req.query.keyword
-//   const restaurants = restaurantList.filter(restaurant => {
-//     return restaurant.name.toLowerCase().includes(keyword.trim().toLowerCase()) || restaurant.category.includes(keyword.trim())
-//   })
-//   res.render('index', { restaurants: restaurants, keyword: keyword })
-// })
+app.get('/search', (req, res) => {
+
+  const keyword = req.query.keyword
+
+  restaurantList.find()
+    .lean()
+    .then(restaurants => {
+      const Filterrestaurants = restaurants.filter(
+        restaurant =>
+          restaurant.name.toLowerCase().includes(keyword.trim().toLowerCase()) || restaurant.category.includes(keyword.trim())
+      )
+      res.render('index', { restaurants: Filterrestaurants, keyword: keyword })
+    })
+
+    .catch(err => console.log(err))
+})
 
 // route setting 新增餐廳頁面
 // 無法使用restaurants + new /restaurants/new
