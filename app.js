@@ -7,6 +7,19 @@ const port = 3000
 // require handlebars in the project
 const exphbs = require('express-handlebars')
 
+const mongoose = require('mongoose')
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+
+const db = mongoose.connection
+// 連線異常
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+// 連線成功
+db.once('open', () => {
+  console.log('mongodb connected!')
+})
+
 // 用目錄方式選，加上「./」 和 副檔名
 // 不然node.js會當成模組
 const restaurantList = require('./restaurant.json')
