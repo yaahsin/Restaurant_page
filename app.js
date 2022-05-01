@@ -32,6 +32,12 @@ app.set('view engine', 'handlebars')
 // 設定 Express 路由以提供靜態檔案
 app.use(express.static('public'))
 
+// 引用 body-parser
+const bodyParser = require('body-parser')
+const Restaurant = require('./models/Restaurant')
+// 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
+app.use(bodyParser.urlencoded({ extended: true }))
+
 // routes setting
 // past the movie data into 'index' partial template
 app.get('/', (req, res) => {
@@ -42,18 +48,30 @@ app.get('/', (req, res) => {
 })
 
 // 點進去的單一項目
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-  res.render('show', { restaurant: restaurant })
-})
+// app.get('/restaurants/:restaurant_id', (req, res) => {
+//   const restaurant = restaurantList.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
+//   res.render('show', { restaurant: restaurant })
+// })
 
 // routes setting 搜尋頁面
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  const restaurants = restaurantList.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.trim().toLowerCase()) || restaurant.category.includes(keyword.trim())
-  })
-  res.render('index', { restaurants: restaurants, keyword: keyword })
+// app.get('/search', (req, res) => {
+//   const keyword = req.query.keyword
+//   const restaurants = restaurantList.filter(restaurant => {
+//     return restaurant.name.toLowerCase().includes(keyword.trim().toLowerCase()) || restaurant.category.includes(keyword.trim())
+//   })
+//   res.render('index', { restaurants: restaurants, keyword: keyword })
+// })
+
+// route setting 新增餐廳頁面
+app.get("/restaurants/new", (req, res) => {
+  return res.render("new")
+})
+
+// 直接在表單當中將需求之格式定好後, 存入資料庫
+app.post("/restaurants", (req, res) => {
+  Restaurant.create(req.body)
+    .then(() => res.redirect("/"))
+    .catch(err => console.log(err))
 })
 
 // start and listen on the Express server
