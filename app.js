@@ -48,10 +48,17 @@ app.get('/', (req, res) => {
 })
 
 // 點進去的單一項目
-// app.get('/restaurants/:restaurant_id', (req, res) => {
-//   const restaurant = restaurantList.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-//   res.render('show', { restaurant: restaurant })
-// })
+app.get("/restaurants/:restaurantId", (req, res) => {
+  // 把obj丟進變數的old school寫法
+  // const restaurantId = req.params.restaurantId
+  // ES6的寫法 Destructuring assignment
+  const { restaurantId } = req.params
+
+  Restaurant.findById(restaurantId)
+    .lean()
+    .then(restaurantData => res.render("show", { restaurantData }))
+    .catch(err => console.log(err))
+})
 
 // routes setting 搜尋頁面
 // app.get('/search', (req, res) => {
