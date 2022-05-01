@@ -70,8 +70,9 @@ app.get("/restaurants/:restaurantId", (req, res) => {
 // })
 
 // route setting 新增餐廳頁面
-app.get("/restaurants/new", (req, res) => {
-  return res.render("new")
+// 無法使用兩層目錄 /restaurants/new
+app.get("/restaurantsNew", (req, res) => {
+  res.render("new")
 })
 
 // 直接在表單當中將需求之格式定好後, 存入資料庫
@@ -80,6 +81,24 @@ app.post("/restaurants", (req, res) => {
     .then(() => res.redirect("/"))
     .catch(err => console.log(err))
 })
+
+// route setting 編輯餐廳頁面
+app.get('/restaurants/:restaurantId/edit', (req, res) => {
+  const { restaurantId } = req.params
+
+  Restaurant.findById(restaurantId)
+    .lean()
+    .then((restaurantData) => res.render('edit', { restaurantData }))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurants/:restaurantId/edit', (req, res) => {
+  const { restaurantId } = req.params
+  Restaurant.findByIdAndUpdate(restaurantId, req.body)
+    .then(() => res.redirect(`/restaurants/${restaurantId}`))
+    .catch(err => console.log(err))
+})
+
 
 // start and listen on the Express server
 app.listen(port, () => {
