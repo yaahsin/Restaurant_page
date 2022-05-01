@@ -18,6 +18,7 @@ db.on('error', () => {
 // 連線成功
 db.once('open', () => {
   console.log('mongodb connected!')
+  // console.log(restaurantList)
 })
 
 // 用目錄方式選，加上「./」 和 副檔名
