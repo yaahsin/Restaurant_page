@@ -2,16 +2,17 @@
 <h1 class="mb-1 restaurant-show-title">{{restaurantData.name}}</h1>
 <div class="container">
   <div class="functions d-flex justify-content-end">
-    <form action="./restaurants/{{ restaurantData._id }}/delete" method="POST" style="display: inline;">
-      <button class="btn btn-outline-danger m-1" type="submit">刪除</button>
-      <a href="/restaurants/{{restaurantData._id}}/edit">
-        <button class="btn btn-outline-info ">編輯</button>
-      </a>
-      <a href="/">
-        <button type="button" class="btn btn-outline-secondary ml-2">
-          返回首頁
-        </button>
-      </a>
+    <a href="/restaurants/{{restaurantData._id}}/edit">
+      <button class="btn btn-outline-info ">編輯</button>
+    </a>
+    <a href="/">
+      <button type="button" class="btn btn-outline-secondary ml-2">
+        返回首頁
+      </button>
+      <form action="./restaurants/{{ restaurantData._id }}/delete" method="POST" style="display: inline;">
+        <button class="btn btn-danger" type="submit">刪除</button>
+      </form>
+    </a>
   </div>
 
   <div class="row">

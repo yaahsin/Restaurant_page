@@ -43,12 +43,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/', (req, res) => {
   restaurantList.find()
     .lean()
+    .sort({ _id: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
     .catch(error => console.error(error))
 })
 
 // 點進去的單一項目
-app.get("/restaurants/:restaurantId", (req, res) => {
+app.get('/restaurants/:restaurantId', (req, res) => {
   // 把obj丟進變數的old school寫法
   // const restaurantId = req.params.restaurantId
   // ES6的寫法 Destructuring assignment
@@ -56,23 +57,23 @@ app.get("/restaurants/:restaurantId", (req, res) => {
 
   Restaurant.findById(restaurantId)
     .lean()
-    .then(restaurantData => res.render("show", { restaurantData }))
+    .then(restaurantData => res.render('show', { restaurantData }))
     .catch(err => console.log(err))
 })
 
 // routes setting 搜尋頁面
 app.get('/search', (req, res) => {
-
   const keyword = req.query.keyword
-
+  // 撈出所有資料
   restaurantList.find()
     .lean()
     .then(restaurants => {
-      const Filterrestaurants = restaurants.filter(
+      // 將資料篩選, 分別比對名字和分類, 將結果存成變數
+      const FilterRestaurants = restaurants.filter(
         restaurant =>
           restaurant.name.toLowerCase().includes(keyword.trim().toLowerCase()) || restaurant.category.includes(keyword.trim())
       )
-      res.render('index', { restaurants: Filterrestaurants, keyword: keyword })
+      res.render('index', { restaurants: FilterRestaurants })
     })
 
     .catch(err => console.log(err))
@@ -81,14 +82,14 @@ app.get('/search', (req, res) => {
 // route setting 新增餐廳頁面
 // 無法使用restaurants + new /restaurants/new
 // restaurant需改成其他字詞才可以
-app.get("/yahsin/New", (req, res) => {
-  res.render("new")
+app.get('/yahsin/New', (req, res) => {
+  res.render('new')
 })
 
 // 直接在表單當中將需求之格式定好後, 存入資料庫
-app.post("/restaurants", (req, res) => {
+app.post('/restaurants', (req, res) => {
   Restaurant.create(req.body)
-    .then(() => res.redirect("/"))
+    .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })
 
