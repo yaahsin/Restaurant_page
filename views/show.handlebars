@@ -9,7 +9,7 @@
       <button type="button" class="btn btn-outline-secondary ml-2">
         返回首頁
       </button>
-      <form action="./restaurants/{{ restaurantData._id }}/delete" method="POST" style="display: inline;">
+      <form action="./restaurants/{{ restaurantData._id }}?_method=DELETE" method="POST" style="display: inline;">
         <button class="btn btn-danger" type="submit">刪除</button>
       </form>
     </a>
