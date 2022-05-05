@@ -1,21 +1,10 @@
 // models/seeds
 
-const mongoose = require('mongoose')
 const RestaurantList = require('../Restaurant')
+const db = require('../../config/mongoose')
+
 // 取得上上一層目錄的json檔資料
 const restaurantList = require('../../restaurant.json').results
-
-// 連線到資料庫
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error!')
-})
 
 db.once('open', () => {
   console.log('running restaurantSeeder script...')

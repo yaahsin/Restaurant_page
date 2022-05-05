@@ -3,7 +3,6 @@
 // require handlebars in the project
 // 引用 body-parser
 const express = require('express')
-const mongoose = require('mongoose')
 const port = 3000
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
@@ -15,22 +14,9 @@ const RestaurantList = require('./models/Restaurant')
 
 // 引用路由器
 const routes = require('./routes')
+require('./config/mongoose')
 
 const app = express()
-
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-
-
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-
-db.once('open', () => {
-  console.log('mongodb connected!')
-  // console.log(restaurantList)
-})
 
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
