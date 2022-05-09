@@ -8,7 +8,7 @@ Quickly explore the restraurants by web application.
  - Details can be reach by clicking the image.
  - Use the search bar to look for desired restaurants by name or categories
 
-![Homepage](https://raw.githubusercontent.com/yaahsin/Restaurant_page/main/public/image/2-3_A1%20%E9%A4%90%E5%BB%B3%E6%B8%85%E5%96%AE.png?token=GHSAT0AAAAAABTPXLF6P3M6WXC5L53H5PA4YTH6JEQ)
+![Homepage](https://raw.githubusercontent.com/yaahsin/Restaurant_page/main/public/image/2-3_A1%20%E9%A4%90%E5%BB%B3%E6%B8%85%E5%96%AE.png?token=GHSAT0AAAAAABTPXLF7GFP6GIWKZBH54M5GYTZDOJA)
 
 
 ## Installing
