@@ -24,14 +24,17 @@
             width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
           我的餐廳清單
         </a>
+        {{!-- 這邊不能寫成 ./restaurants/new--}}
+        {{!-- 不然跑出來的網址會是 restaurants/restaurants/new--}}
+        <a href="/restaurants/new"><button class="btn btn-warning">新增餐廳</button></a>
       </div>
     </nav>
 
     <div class="banner"></div>
   </header>
-  
-    <!-- partial templates will replace the part of "body" here -->
-    {{{ body }}}
+
+  <!-- partial templates will replace the part of "body" here -->
+  {{{ body }}}
 
   <!-- include javascript files here -->
   <script src="/javascripts/popper.js"></script>

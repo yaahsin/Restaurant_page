@@ -16,9 +16,6 @@
     </div>
   </div>
 </div>
-<div class = "container functions">
-  <a href="./restaurants/new">Create</a>
-</div>
 
 {{!-- 使用handlebars的built in helper處理條件情境--}}
 {{#if restaurants}}
@@ -30,10 +27,9 @@
     {{#each restaurants}}
     {{!-- 這行應該是要在外面,card-columns的前面!? --}}
     <div class="col-12 col-lg-3 col-md-4 col-sm-6 mb-2">
-      <a href="/restaurants/{{this.id}}" class="text-secondary">
+      <a href="/restaurants/{{this._id}}" class="text-secondary">
         <div class="card mb-3">
           <img class="card-img-top" src="{{ this.image }}" alt="{{ this.name }}">
-
           <div class="card-body p-3">
             <h6 class="card-title mb-1">{{ this.name }}</h6>
             <div class="restaurant-category mb-1">
@@ -44,8 +40,10 @@
               <i class="fas fa-star fa-xs"></i>
             </span>
           </div>
-
         </div>
+      </a>
+      <a href="./restaurants/{{ this._id }}">
+        <button class="btn btn-outline-info btn-sm m-1">介紹</button>
       </a>
     </div>
     {{/each}}
