@@ -22,10 +22,10 @@
       排列順序
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item asc" href="#"> A -> Z</a>
-      <a class="dropdown-item dec" href="#"> Z -> A</a>
-      <a class="dropdown-item category" href="#">類別</a>
-      <a class="dropdown-item region" href="#">地區</a>
+      <a class="dropdown-item asc" href="/order_asc"> A -> Z</a>
+      <a class="dropdown-item dec" href="/order_desc"> Z -> A</a>
+      <a class="dropdown-item category" href="/order_category">類別</a>
+      <a class="dropdown-item region" href="/order_location">地區</a>
     </div>
   </div>
 </div>
@@ -56,7 +56,7 @@
           <div class="functions d-flex justify-content-center">
             <a href="/restaurants/{{this._id}}"><button class="btn btn-outline-info btn-sm m-1">介紹</button></a>
             <a href="/restaurants/{{this._id}}/edit"><button class="btn btn-outline-info btn-sm m-1">編輯</button></a>
-            <form action="./restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <form action="/restaurants/{{this._id}}/delete" method="POST" style="display: inline;">
               <button class="btn btn-outline-danger btn-sm m-1" type="submit">刪除</button>
             </form>
           </div>
