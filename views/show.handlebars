@@ -1,6 +1,16 @@
 <!-- ./views/show.handlebars -->
 <h1 class="mb-1 restaurant-show-title">{{restaurantData.name}}</h1>
 <div class="container">
+  <div class="d-flex justify-content-end">
+    <a href="/restaurants/{{restaurantData._id}}/edit">
+      <button class="btn btn-outline-info">編輯</button>
+    </a>
+    <a href="/">
+      <button type="button" class="btn btn-outline-secondary">
+        返回首頁
+      </button>
+    </a>
+  </div>
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
 

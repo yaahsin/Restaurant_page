@@ -62,6 +62,24 @@ app.get('/restaurants/:restaurantId', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// route setting 編輯餐廳頁面
+app.get('/restaurants/:restaurantId/edit', (req, res) => {
+  const { restaurantId } = req.params
+  // 取得id之後，將其傳至edit樣版渲染
+  Restaurant.findById(restaurantId)
+    .lean()
+    .then((restaurantData) => res.render('edit', { restaurantData }))
+    .catch(error => console.log(error))
+})
+
+// 依照該id去做更新，再導回介紹頁面
+app.post('/restaurants/:restaurantId/edit', (req, res) => {
+  const { restaurantId } = req.params
+  Restaurant.findByIdAndUpdate(restaurantId, req.body)
+    .then(() => res.redirect(`/restaurants/${restaurantId}`))
+    .catch(err => console.log(err))
+})
+
 // routes setting 搜尋頁面
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
