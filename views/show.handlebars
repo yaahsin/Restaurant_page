@@ -10,6 +10,9 @@
         返回首頁
       </button>
     </a>
+    <form action="./restaurants/{{ restaurantData._id }}/delete" method="POST" style="display: inline;">
+      <button class="btn btn-outline-danger m-1" type="submit">刪除</button>
+    </form>
   </div>
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">

@@ -48,6 +48,11 @@
       <a href="./restaurants/{{this._id}}/edit">
         <button class="btn btn-outline-info btn-sm m-1">編輯</button>
       </a>
+      {{!-- 在index頁面加上刪除按鈕 --}}
+      {{!-- 因為是要用POST請求，所以改成form --}}
+      <form action="./restaurants/{{ this._id }}/delete" method="POST" style="display: inline;">
+        <button class="btn btn-outline-danger btn-sm m-1" type="submit">刪除</button>
+      </form>
     </div>
     {{/each}}
 

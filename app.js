@@ -80,6 +80,16 @@ app.post('/restaurants/:restaurantId/edit', (req, res) => {
     .catch(err => console.log(err))
 })
 
+// route setting 刪除功能
+app.post('/restaurants/:restaurantId/delete', (req, res) => {
+  const { restaurantId } = req.params
+  //找到對應的id移除後，直接導回主頁面
+  Restaurant.findById(restaurantId)
+    .then(restaurantData => restaurantData.remove())
+    .then((restaurantData) => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 // routes setting 搜尋頁面
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
