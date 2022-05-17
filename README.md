@@ -1,11 +1,11 @@
 
 # Be A Foodie: Restaurant List
 
-  
-
 Quickly explore the restaurants by web application.
 
-**Features**
+![Home page](https://raw.githubusercontent.com/yaahsin/Restaurant_page/A7-CRUD/views/2-3_A7%20%E9%A4%90%E5%BB%B3%E9%A6%96%E9%A0%81.png)  
+
+## Features
 
  - Use the search bar to look for desired restaurants by name or categories.
  -  Eight restaurants are available to be explored by default.
@@ -46,6 +46,7 @@ set "MONGODB_URI= <MongoDB URI>"
 6. Command `npm run dev`  to start the server
 
 7. If `server is running on port 3000`, visit http://localhost:3000.
+
 
 **Built With**
 - Node.js v16.14.2
