@@ -2,6 +2,7 @@
 <h1 class="mb-1 restaurant-show-title">{{restaurantData.name}}</h1>
 <div class="container">
   <div class="functions d-flex justify-content-end">
+    {{!-- a只能get 不能post, 若要post需改成form去設定method --}}
     <a href="/restaurants/{{restaurantData._id}}/edit">
       <button class="btn btn-outline-info ">編輯</button>
     </a>
@@ -9,7 +10,7 @@
       <button type="button" class="btn btn-outline-secondary ml-2">
         返回首頁
       </button>
-      <form action="/restaurants/{{ restaurantData._id }}/delete" method="POST" style="display: inline;">
+      <form action="/restaurants/{{ restaurantData._id }}?_method=DELETE" method="POST" style="display: inline;">
         <button class="btn btn-danger" type="submit">刪除</button>
       </form>
     </a>
