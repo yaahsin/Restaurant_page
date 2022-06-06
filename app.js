@@ -1,6 +1,7 @@
 // app.js
 // require packages used handlebars body-parser in the project
 const express = require('express')
+const session = require('express-session')
 const port = 3000
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
@@ -16,6 +17,11 @@ const app = express()
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 // 設定 Express 路由以提供靜態檔案
 app.use(express.static('public'))
 
