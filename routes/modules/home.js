@@ -7,7 +7,8 @@ const RestaurantList = require('../../models/Restaurant')
 // routes setting
 // past the data into 'index' partial template
 router.get('/', (req, res) => {
-  RestaurantList.find()
+  const userId = req.user._id
+  RestaurantList.find({ userId })
     .lean()
     .sort({ _id: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))

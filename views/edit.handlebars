@@ -43,8 +43,8 @@
     </div>
     <div class="mb-3">
       <label for="google_map" class="form-label">Google地圖連結<span class="text-danger">*</span></label>
-      <input type="url" class="form-control" id="google_map" placeholder="1-5" name="google_map"
-        value="{{restaurantData.google_map}}" required />
+      <input type="url" class="form-control" id="google_map" name="google_map" value="{{restaurantData.google_map}}"
+        required />
     </div>
     <div class="mb-3">
       <label for="rating" class="form-label">評分<span class="text-danger">*</span></label>
@@ -54,7 +54,8 @@
 
     <div class="mb-3">
       <label for="description" class="form-label">敘述<span class="text-danger">*</span></label>
-      <textarea class="form-control" id="description" rows="3" required> {{restaurantData.description}} </textarea>
+      <textarea class="form-control" id="description" rows="3" name="description"
+        required> {{restaurantData.description}} </textarea>
     </div>
 
     <div class="text-center">
