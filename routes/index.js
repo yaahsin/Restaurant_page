@@ -7,11 +7,14 @@ const home = require('./modules/home')
 // 引入 restaurants and users 模組程式碼
 const restaurants = require('./modules/restaurants')
 const users = require('./modules/users')
+const auth = require('./modules/auth')
+
 const { authenticator } = require('../middleware/auth')  // 掛載 middleware
 
 // 將網址結構符合字串開頭的request, 導向對應模組
 router.use('/restaurants', authenticator, restaurants)
 router.use('/users', users)
+router.use('/auth', auth)
 router.use('/', authenticator, home)
 
 
