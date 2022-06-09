@@ -3,7 +3,7 @@
 
 Quickly explore the restaurants by web application.
 
-![Home page]()  
+![Home page](https://raw.githubusercontent.com/yaahsin/Restaurant_page/main/views/2-3_A8%20%E9%A4%90%E5%BB%B3%E9%A6%96%E9%A0%81(%E9%87%8D%E6%A7%8B%E8%B7%AF%E7%94%B1).png)  
 
 ## Features
 
