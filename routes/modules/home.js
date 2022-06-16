@@ -16,7 +16,8 @@ router.get('/', (req, res) => {
 })
 
 router.get('/order_asc', (req, res) => {
-  RestaurantList.find()
+  const userId = req.user._id
+  RestaurantList.find({ userId })
     .lean()
     .sort({ name: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
@@ -24,7 +25,8 @@ router.get('/order_asc', (req, res) => {
 })
 
 router.get('/order_desc', (req, res) => {
-  RestaurantList.find()
+  const userId = req.user._id
+  RestaurantList.find({ userId })
     .lean()
     .sort({ name: 'desc' })
     .then(restaurants => res.render('index', { restaurants }))
@@ -32,7 +34,8 @@ router.get('/order_desc', (req, res) => {
 })
 
 router.get('/order_category', (req, res) => {
-  RestaurantList.find()
+  const userId = req.user._id
+  RestaurantList.find({ userId })
     .lean()
     .sort({ category: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
@@ -40,7 +43,8 @@ router.get('/order_category', (req, res) => {
 })
 
 router.get('/order_location', (req, res) => {
-  RestaurantList.find()
+  const userId = req.user._id
+  RestaurantList.find({ userId })
     .lean()
     .sort({ location: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
@@ -49,9 +53,11 @@ router.get('/order_location', (req, res) => {
 
 // routes setting 搜尋頁面
 router.get('/search', (req, res) => {
+  const userId = req.user._id
+  RestaurantList.find({ userId })
   const keyword = req.query.keyword
   // 撈出所有資料
-  RestaurantList.find()
+  RestaurantList.find({ userId })
     .lean()
     .then(restaurants => {
       // 將資料篩選, 分別比對名字和分類, 將結果存成變數

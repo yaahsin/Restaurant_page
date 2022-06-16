@@ -13,11 +13,13 @@ const db = require('../../config/mongoose')
 const restaurantList = require('../../restaurant.json').results
 
 const SEED_USER = [{
+  name: 'user1',
   email: 'user1@example.com',
   password: '12345678',
   InitialList: [1, 2, 3]
 },
 {
+  name: 'user2',
   email: 'user2@example.com',
   password: '12345678',
   InitialList: [4, 5, 6]
